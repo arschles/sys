@@ -4,7 +4,6 @@ import "path/filepath"
 
 // FP is the interface to a filepath.
 type FP interface {
-
 	// Walk walks the file tree rooted at root, calling walkFn for each file or directory in the tree, including root
 	Walk(root string, walkFunc filepath.WalkFunc) error
 }
@@ -23,7 +22,7 @@ func (r *realFP) Walk(root string, walkFunc filepath.WalkFunc) error {
 // FakeFP represents a fake filepath
 type FakeFP struct {
 	FakeFS
-	walkInvoked bool
+	WalkInvoked bool
 }
 
 // NewFakeFP returns a FakeFP.
@@ -34,6 +33,6 @@ func NewFakeFP() *FakeFP {
 // Walk walks the file tree rooted at root, calling walkFn for each file or directory in the tree, including root.
 // Additionally, it sets the f.walkInvoked bool as true
 func (f *FakeFP) Walk(root string, walkFunc filepath.WalkFunc) error {
-	f.walkInvoked = true
+	f.WalkInvoked = true
 	return walkFunc(root, NewFakeFI(), nil)
 }

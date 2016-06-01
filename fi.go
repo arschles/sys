@@ -17,3 +17,8 @@ func NewFakeFI() *FakeFI {
 func (ffi *FakeFI) IsDir() bool {
 	return ffi.isDir
 }
+
+// SetIsDir sets the isDir bool value on a FakeFI instance
+func (ffi *FakeFI) SetIsDir(isDir bool) {
+	ffi.isDir = isDir
+}
